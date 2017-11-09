@@ -27,10 +27,30 @@ if (isset($_POST) && count($_POST) > 0) {
 <div class="container">
 <h1>Http-only</h1>
 <h2>Status cookies</h2>
-<p>Cookie1: <?php echo isset($_COOKIE["cookie1"])?$_COOKIE["cookie1"]:"(Cookie niet gezet)";?></p>
-<p>Cookie2: <?php echo isset($_COOKIE["cookie2"])?$_COOKIE["cookie2"]:"(Cookie niet gezet)";?></p
-<p>Cookie3: <?php echo isset($_COOKIE["cookie3"])?$_COOKIE["cookie3"]:"(Cookie niet gezet)";?></p>
-<p>Cookie4: <?php echo isset($_COOKIE["cookie4"])?$_COOKIE["cookie4"]:"(Cookie niet gezet)";?></p>
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>Type</th>
+            <th>Waarde</th>
+        </tr>
+        </thead>
+        <tr>
+            <td>Cookie zonder http-only</td>
+            <td><?php echo isset($_COOKIE["cookie1"])?$_COOKIE["cookie1"]:"(Cookie niet gezet)";?></td>
+        </tr>
+        <tr>
+            <td>Cookie met http-only</td>
+            <td><?php echo isset($_COOKIE["cookie2"])?$_COOKIE["cookie2"]:"(Cookie niet gezet)";?></td>
+        </tr>
+        <tr>
+            <td>Cookie zonder secure</td>
+            <td><?php echo isset($_COOKIE["cookie3"])?$_COOKIE["cookie3"]:"(Cookie niet gezet)";?></td>
+        </tr>
+        <tr>
+            <td>Cookie met secure</td>
+            <td><?php echo isset($_COOKIE["cookie4"])?$_COOKIE["cookie4"]:"(Cookie niet gezet)";?></td>
+        </tr>
+    </table>
 <button onclick="alert(document.cookie)">Toon cookies via Javascript</button>
 <p></p>
 <h2>Cookies aanpassen</h2>
