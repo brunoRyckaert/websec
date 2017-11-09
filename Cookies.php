@@ -25,7 +25,7 @@ if (isset($_POST) && count($_POST) > 0) {
 </head>
 <body>
 <div class="container">
-<h1>Http-only</h1>
+<h1>Http-only & secure flags</h1>
 <h2>Status cookies</h2>
     <table class="table table-hover">
         <thead>
@@ -54,6 +54,7 @@ if (isset($_POST) && count($_POST) > 0) {
 <button onclick="alert(document.cookie)">Toon cookies via Javascript</button>
 <p></p>
 <h2>Cookies aanpassen</h2>
+    <h3>Http-only</h3>
 <form class="form-group" method="post">
     Cookie zonder http-only: <input type="text" name="cookie1" class="form-control"/>
     Cookie met http-only: <input type="text" name="cookie2" class="form-control"/>
@@ -62,7 +63,7 @@ if (isset($_POST) && count($_POST) > 0) {
 </form>
 </div>
 <div class="container">
-    <h2>Secure</h2>
+    <h3>Secure</h3>
     <form class="form-group" method="post">
         Cookie zonder secure: <input type="text" name="cookie3" class="form-control"/>
         Cookie met secure: <input type="text" name="cookie4" class="form-control"/>
