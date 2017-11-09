@@ -5,13 +5,17 @@
  * Date: 08-Nov-17
  * Time: 23:18
  */
-if (isset($_POST["cookie1"])) {
-    setcookie("cookie1",$_POST["cookie1"],time()+3600,null,null,null,false);
-    setcookie("cookie2",$_POST["cookie2"],time()+3600,null,null,null,true);
 
-    //Cookies zijn pas beschikbaar vanaf eerstvolgende keer dat pagina geladen wordt.
-    $_COOKIE["cookie1"] = $_POST["cookie1"];
-    $_COOKIE["cookie2"] = $_POST["cookie2"];
+if (isset($_POST) && count($_POST) > 0) {
+    if (isset($_POST["cookie1"])) {
+        setcookie("cookie1", $_POST["cookie1"], time() + 3600, null, null, null, false);
+        setcookie("cookie2", $_POST["cookie2"], time() + 3600, null, null, null, true);
+    }
+    if (isset($_POST["cookie3"])) {
+        setcookie("cookie3", $_POST["cookie3"], time() + 3600, null, null, false, null);
+        setcookie("cookie4", $_POST["cookie4"], time() + 3600, null, null, true, null);
+    }
+    header("Refresh:0");
 }
 ?>
 
@@ -24,7 +28,9 @@ if (isset($_POST["cookie1"])) {
 <h1>Http-only</h1>
 <h2>Status cookies</h2>
 <p>Cookie1: <?php echo isset($_COOKIE["cookie1"])?$_COOKIE["cookie1"]:"(Cookie niet gezet)";?></p>
-<p>Cookie2: <?php echo isset($_COOKIE["cookie2"])?$_COOKIE["cookie2"]:"(Cookie niet gezet)";?></p>
+<p>Cookie2: <?php echo isset($_COOKIE["cookie2"])?$_COOKIE["cookie2"]:"(Cookie niet gezet)";?></p
+<p>Cookie3: <?php echo isset($_COOKIE["cookie3"])?$_COOKIE["cookie3"]:"(Cookie niet gezet)";?></p>
+<p>Cookie4: <?php echo isset($_COOKIE["cookie4"])?$_COOKIE["cookie4"]:"(Cookie niet gezet)";?></p>
 <button onclick="alert(document.cookie)">Toon cookies via Javascript</button>
 <p></p>
 <h2>Cookies aanpassen</h2>
@@ -34,6 +40,15 @@ if (isset($_POST["cookie1"])) {
     <br>
     <button type="submit" class="form-control">Opslaan</button>
 </form>
+</div>
+<div class="container">
+    <h2>Secure</h2>
+    <form class="form-group" method="post">
+        Cookie zonder secure: <input type="text" name="cookie3" class="form-control"/>
+        Cookie met secure: <input type="text" name="cookie4" class="form-control"/>
+        <br>
+        <button type="submit" class="form-control">Opslaan</button>
+    </form>
 </div>
 </body>
 </html>
